@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OpenRP.GameMode.Systems;
 using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
 
@@ -9,6 +10,7 @@ namespace OpenRP.GameMode
         public void Configure(IServiceCollection services)
         {
             // TODO: Add services and systems to the services collection
+            services.AddSystem<WelcomeScreenSystem>();
             services.AddSystem<SetupServer>();
         }
 
