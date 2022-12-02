@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenRP.GameMode.Components
+namespace OpenRP.GameMode.Features.Accounts.Components
 {
     public class AccountComponent : Component
     {

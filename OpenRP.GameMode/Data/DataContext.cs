@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OpenRP.GameMode.Configuration;
 using OpenRP.GameMode.Data.Models;
 
 namespace OpenRP.GameMode.Data
@@ -11,7 +12,7 @@ namespace OpenRP.GameMode.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user=root;password=;database=openrp", new MariaDbServerVersion("10.4.21"));
+            optionsBuilder.UseMySql(ConfigManager.Instance.Data.ConnectionString, new MariaDbServerVersion("10.4.21"));
         }
     }
 }
