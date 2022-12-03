@@ -50,7 +50,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 
                     if (AccountHelper.DoesAccountExist(r.InputText))
                     {
-                        //OpenUsernameAlreadyExistsDialog(player);
+                        UsernameAlreadyExistsDialog.Open(player, dialogService);
                     }
                     else
                     {
