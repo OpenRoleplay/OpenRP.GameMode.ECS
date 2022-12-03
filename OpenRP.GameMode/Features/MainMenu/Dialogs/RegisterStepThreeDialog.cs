@@ -31,7 +31,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 
                     if (BCrypt.Net.BCrypt.Verify(r.InputText, accountComponent?.Account?.Password))
                     {
-                        MessageDialog passwordSetDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password Confirmation", "Your password has been set.You may now log in to your account.", DialogConstants.Next);
+                        MessageDialog passwordSetDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password Confirmation", ChatColor.White + "Your password has been set. You may now log in to your account.", DialogConstants.Next);
 
                         void PasswordSetDialogHandler(MessageDialogResponse r)
                         {
@@ -50,7 +50,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     } 
                     else
                     {
-                        MessageDialog passwordsDoNotMatchDialog = new MessageDialog(DialogConstants.Prefix + "Password Confirmation" + DialogConstants.Separator + "Password", "The passwords you have entered do not match.", DialogConstants.Retry);
+                        MessageDialog passwordsDoNotMatchDialog = new MessageDialog(DialogConstants.Prefix + "Password Confirmation" + DialogConstants.Separator + "Password", ChatColor.White + "The passwords you have entered do not match.", DialogConstants.Retry);
 
                         void PasswordsDoNotMatchDialogHandler(MessageDialogResponse r)
                         {

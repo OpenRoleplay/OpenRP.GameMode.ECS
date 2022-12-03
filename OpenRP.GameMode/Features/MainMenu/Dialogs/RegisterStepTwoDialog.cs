@@ -27,7 +27,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                 {
                     if (r.InputText.Length < 8)
                     {
-                        MessageDialog passwordMustBeLongerThanEightCharactersDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password", "Your password must be longer than 8 characters.", DialogConstants.Retry);
+                        MessageDialog passwordMustBeLongerThanEightCharactersDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password", ChatColor.White + "Your password must be longer than 8 characters.", DialogConstants.Retry);
 
                         void PasswordMustBeLongerThanEightCharactersDialogHandler(MessageDialogResponse r)
                         {
@@ -43,7 +43,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     {
                         accountComponent.Account.Password = BCrypt.Net.BCrypt.HashPassword(r.InputText, 11);
 
-                        MessageDialog passwordSet = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password", "Your password has been set. You must now confirm your password.", DialogConstants.Next);
+                        MessageDialog passwordSet = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password", ChatColor.White + "Your password has been set. You must now confirm your password.", DialogConstants.Next);
 
                         void PasswordSetHandler(MessageDialogResponse r)
                         {
