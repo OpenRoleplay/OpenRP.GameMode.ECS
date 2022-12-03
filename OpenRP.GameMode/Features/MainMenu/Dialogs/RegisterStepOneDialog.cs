@@ -48,7 +48,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                         dialogService.Show(player.Entity, usernameNoLongerThanTwentyFourCharactersDialog, UsernameNoLongerThanTwentyFourCharactersDialogHandler);
                     }
 
-                    if (AccountHelper.DoesAccountExist(e.InputText))
+                    if (AccountHelper.DoesAccountExist(r.InputText))
                     {
                         //OpenUsernameAlreadyExistsDialog(player);
                     }
