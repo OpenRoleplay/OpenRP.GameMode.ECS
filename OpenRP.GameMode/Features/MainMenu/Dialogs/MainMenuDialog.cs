@@ -11,7 +11,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
     {
         public static void Open(Player player, IDialogService dialogService)
         {
-            ListDialog mainMenuDialog = new ListDialog(ChatColor.White + "Welcome to Open Roleplay! What would you like to do?", DialogConstants.Next, DialogConstants.Previous);
+            ListDialog mainMenuDialog = new ListDialog(ChatColor.White + "Welcome to Open Roleplay!", DialogConstants.Next, DialogConstants.Previous);
 
             bool doesAccountExist = AccountHelper.DoesAccountExist(player.Name);
 

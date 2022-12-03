@@ -15,7 +15,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
         {
             InputDialog registerDialog = new InputDialog();
 
-            registerDialog.Caption = DialogConstants.Prefix + "Registration | Username";
+            registerDialog.Caption = DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Username";
             registerDialog.Content = ChatColor.White + "What would you like your username to be?";
             registerDialog.Button1 = DialogConstants.Next;
             registerDialog.Button2 = DialogConstants.Previous;
@@ -26,7 +26,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                 {
                     if (r.InputText.Length < 3)
                     {
-                        MessageDialog usernameLongerThanThreeCharactersDialog = new MessageDialog(DialogConstants.Prefix + "Registration | Username", ChatColor.White + "Your username must be longer than 3 characters.", DialogConstants.Retry);
+                        MessageDialog usernameLongerThanThreeCharactersDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Username", ChatColor.White + "Your username must be longer than 3 characters.", DialogConstants.Retry);
                         
                         void UsernameLongerThanThreeCharactersDialogHandler(MessageDialogResponse r)
                         {
@@ -38,7 +38,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 
                     if (r.InputText.Length > 24)
                     {
-                        MessageDialog usernameNoLongerThanTwentyFourCharactersDialog = new MessageDialog(DialogConstants.Prefix + "Registration | Username", ChatColor.White + "Your username can not be longer than 24 characters.", DialogConstants.Retry);
+                        MessageDialog usernameNoLongerThanTwentyFourCharactersDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Username", ChatColor.White + "Your username can not be longer than 24 characters.", DialogConstants.Retry);
 
                         void UsernameNoLongerThanTwentyFourCharactersDialogHandler(MessageDialogResponse r)
                         {
@@ -59,7 +59,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                         accountComponent.Account = new Account();
                         accountComponent.Account.Username = r.InputText;
 
-                        MessageDialog usernameSet = new MessageDialog(DialogConstants.Prefix + "Registration | Username", ChatColor.White + "Your username has been set. You must now choose a password.", "Next");
+                        MessageDialog usernameSet = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Username", ChatColor.White + "Your username has been set. You must now choose a password.", "Next");
                         /*usernameSet.Response += (sender, eventArgs) => {
                             OpenRegisterDialogStep2(player);
                         };
