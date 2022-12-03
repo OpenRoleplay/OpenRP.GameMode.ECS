@@ -14,5 +14,17 @@ namespace OpenRP.GameMode.Data
         {
             optionsBuilder.UseMySql(ConfigManager.Instance.Data.ConnectionString, new MariaDbServerVersion("10.4.21"));
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Inventory>().HasData(
+                new Inventory
+                {
+                    Id = 1,
+                    Name = "World Inventory",
+                    MaxWeight = null,
+                }
+            );
+        }
     }
 }
