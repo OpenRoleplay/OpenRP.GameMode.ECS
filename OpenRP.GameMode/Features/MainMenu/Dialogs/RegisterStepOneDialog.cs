@@ -59,7 +59,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                         accountComponent.Account = new Account();
                         accountComponent.Account.Username = r.InputText;
 
-                        MessageDialog usernameSet = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Username", ChatColor.White + "Your username has been set. You must now choose a password.", "Next");
+                        MessageDialog usernameSet = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Username", ChatColor.White + "Your username has been set. You must now choose a password.", DialogConstants.Next);
                         /*usernameSet.Response += (sender, eventArgs) => {
                             OpenRegisterDialogStep2(player);
                         };
