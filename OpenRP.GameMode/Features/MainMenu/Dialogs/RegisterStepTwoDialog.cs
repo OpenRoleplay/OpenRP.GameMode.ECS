@@ -43,15 +43,14 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     {
                         accountComponent.Account.Password = BCrypt.Net.BCrypt.HashPassword(r.InputText, 11);
 
-                        MessageDialog passwordSet = new MessageDialog("Open Roleplay | Password", "Your password has been set. You must now confirm your password.", DialogConstants.Next);
-                        /*passwordSet.Response += (sender, eventArgs) =>
-                        {
-                            Player player = eventArgs.Player as Player;
+                        MessageDialog passwordSet = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password", "Your password has been set. You must now confirm your password.", DialogConstants.Next);
 
-                            OpenRegisterDialogStep3(player);
+                        void PasswordSetHandler(MessageDialogResponse r)
+                        {
+                            RegisterStepThreeDialog.Open(player, dialogService);
                         };
 
-                        passwordSet.Show(e.Player);*/
+                        dialogService.Show(player.Entity, passwordSet, PasswordSetHandler);
                     }
                 }
                 else

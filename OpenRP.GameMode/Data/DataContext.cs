@@ -17,6 +17,8 @@ namespace OpenRP.GameMode.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Default Data
+            #region Inventories Default Data
             modelBuilder.Entity<Inventory>().HasData(
                 new Inventory
                 {
@@ -25,6 +27,20 @@ namespace OpenRP.GameMode.Data
                     MaxWeight = null,
                 }
             );
+            #endregion
+            #endregion
+
+            #region Default Values
+            #region Accounts Default Values
+            modelBuilder.Entity<Account>()
+            .Property(b => b.Level)
+            .HasDefaultValue(1);
+
+            modelBuilder.Entity<Account>()
+            .Property(b => b.Experience)
+            .HasDefaultValue(0);
+            #endregion
+            #endregion
         }
     }
 }
