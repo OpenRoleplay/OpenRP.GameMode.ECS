@@ -14,11 +14,8 @@ namespace OpenRP.GameMode.Data.Models
         [Column(TypeName = "varchar(24)")]
         public string Username { get; set; }
         [Required]
-        [Column(TypeName = "char(128)")]
+        [Column(TypeName = "char(60)")]
         public string Password { get; set; }
-        [Required]
-        [Column(TypeName = "char(10)")]
-        public string Salt { get; set; }
         public byte Level { get; set; }
         public ushort Experience { get; set; }
         public List<Character> Characters { get; set; }
