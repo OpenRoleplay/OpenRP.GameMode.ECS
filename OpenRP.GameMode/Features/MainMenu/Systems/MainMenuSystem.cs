@@ -1,5 +1,6 @@
 ﻿using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Helpers;
+using OpenRP.GameMode.Features.MainMenu.Dialogs;
 using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
 using System;
@@ -36,60 +37,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Systems
                     break;
             }
 
-            OpenMainMenuDialog(player, dialogService);
-        }
-
-        public void OpenMainMenuDialog(Player player, IDialogService dialogService)
-        {
-            ListDialog mainMenuDialog = new ListDialog(ChatColor.White + "Welcome to Open Roleplay! What would you like to do?", "Continue", "Quit");
-
-            bool doesAccountExist = AccountHelper.DoesAccountExist(player.Name);
-
-            void TestDialogHandler(ListDialogResponse r)
-            {
-                if (r.Response == DialogResponse.LeftButton)
-                {
-                    if (doesAccountExist)
-                    {
-                        if (r.ItemIndex == 0) // Log in to [CURRENT USERNAME]
-                        {
-                            //OpenLoginDialogStep2(player, player.Name);
-                        }
-                        else if (r.ItemIndex == 1) // Log in to a different username
-                        {
-                            //OpenLoginDialogStep1(player);
-                        }
-                        else if (r.ItemIndex == 2) // Create a new account
-                        {
-                            //OpenRegisterDialogStep1(player);
-                        }
-                    }
-                    else
-                    {
-                        if (r.ItemIndex == 0) // Log in to a different username
-                        {
-                            //OpenLoginDialogStep1(player);
-                        }
-                        else if (r.ItemIndex == 1) // Create a new account
-                        {
-                            //OpenRegisterDialogStep1(player);
-                        }
-                    }
-                }
-                else
-                {
-                    player.Kick();
-                }
-            }
-
-            if (doesAccountExist)
-            {
-                mainMenuDialog.Add("Log in to " + ChatColor.CornflowerBlue + player.Name);
-            }
-            mainMenuDialog.Add("Log in to a different username");
-            mainMenuDialog.Add("Create a new account");
-
-            dialogService.Show(player.Entity, mainMenuDialog, TestDialogHandler);
+            MainMenuDialog.Open(player, dialogService);
         }
     }
 }
