@@ -71,7 +71,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                 }
                 else
                 {
-                    player.Kick();
+                    MainMenuDialog.Open(player, dialogService);
                 }
             }
 
