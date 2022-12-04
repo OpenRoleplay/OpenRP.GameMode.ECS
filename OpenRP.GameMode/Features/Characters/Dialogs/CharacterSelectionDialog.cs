@@ -26,11 +26,8 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                 if (r.Response == DialogResponse.LeftButton)
                 {
                     if (r.ItemIndex == accountComponent?.Account?.Characters?.Count)
-                    {               
-                        //player.main_account.create_character = new Character();
-                        //player.main_account.create_character.character_account_id = player.main_account.account_id;
-
-                        //OpenCreateCharacterStep1(player);
+                    {
+                        CreateCharacterFirstNameDialog.Open(player, dialogService);
                     }
                     else {
                         characterComponent.CharacterPlayingAs = accountComponent.Account.Characters.ElementAt(r.ItemIndex);

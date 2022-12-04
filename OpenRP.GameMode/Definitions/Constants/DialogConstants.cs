@@ -11,5 +11,7 @@ namespace OpenRP.GameMode.Definitions.Constants
         public const string Previous = "Previous";
         public const string Next = "Next";
         public const string Retry = "Retry";
+        public const string Yes = "Yes";
+        public const string No = "No";
     }
 }
