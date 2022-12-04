@@ -84,11 +84,13 @@ namespace OpenRP.GameMode.Features.Accounts.Helpers
             if (CheckPassword(username, password))
             {
                 accountComponent.Account = AccountHelper.LoadMainAccount(username);
+                player.SendClientMessage("Logged in");
                 //player.main_account.characters = CharacterHelper.LoadCharacters(username);
 
                 //CharacterDialogs.OpenCharacterListDialog(player);
                 return true;
             }
+            player.SendClientMessage("Not logged in");
             return false;
         }
     }

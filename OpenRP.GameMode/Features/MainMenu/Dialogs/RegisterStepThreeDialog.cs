@@ -44,6 +44,8 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                             insertAccount.ExecuteNonQuery();
 
                             sqlConnecton.Close();
+
+                            LoginStepTwoDialog.Open(player, dialogService, accountComponent.Account.Username);
                         };
 
                         dialogService.Show(player.Entity, passwordSetDialog, PasswordSetDialogHandler);
