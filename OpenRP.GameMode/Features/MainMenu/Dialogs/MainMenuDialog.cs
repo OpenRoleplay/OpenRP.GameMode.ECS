@@ -1,9 +1,7 @@
 ﻿using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Helpers;
+using OpenRP.GameMode.Features.Chat.Constants;
 using SampSharp.Entities.SAMP;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 {

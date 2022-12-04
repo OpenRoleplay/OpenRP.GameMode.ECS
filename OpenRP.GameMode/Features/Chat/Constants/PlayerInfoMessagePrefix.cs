@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OpenRP.GameMode.Definitions.Constants
+﻿namespace OpenRP.GameMode.Features.Chat.Constants
 {
     public class PlayerInfoMessagePrefix
     {

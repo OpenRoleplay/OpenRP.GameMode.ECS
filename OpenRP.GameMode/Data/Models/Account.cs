@@ -1,11 +1,6 @@
-﻿using OpenRP.GameMode.Features.Accounts.Helpers;
-using OpenRP.GameMode.Features.Characters.Helpers;
-using SampSharp.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace OpenRP.GameMode.Data.Models
 {

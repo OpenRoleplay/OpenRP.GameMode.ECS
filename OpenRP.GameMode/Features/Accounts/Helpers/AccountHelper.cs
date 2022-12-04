@@ -7,8 +7,6 @@ using OpenRP.GameMode.Features.Characters.Helpers;
 using OpenRP.GameMode.Features.MainMenu.Dialogs;
 using SampSharp.Entities.SAMP;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OpenRP.GameMode.Features.Accounts.Helpers
 {

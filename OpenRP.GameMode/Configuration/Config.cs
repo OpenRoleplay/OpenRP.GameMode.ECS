@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OpenRP.GameMode.Configuration
+﻿namespace OpenRP.GameMode.Configuration
 {
     public class Config
     {

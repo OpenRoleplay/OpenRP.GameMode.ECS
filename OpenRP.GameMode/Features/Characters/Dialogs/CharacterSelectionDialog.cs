@@ -1,12 +1,12 @@
 ﻿using OpenRP.GameMode.Data.Models;
 using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Components;
-using OpenRP.GameMode.Features.Accounts.Helpers;
+using OpenRP.GameMode.Features.Chat.Constants;
+using OpenRP.GameMode.Features.Chat.Enums;
+using OpenRP.GameMode.Features.Chat.Helpers;
 using SampSharp.Entities.SAMP;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 {
@@ -34,7 +34,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     }
                     else {
                         characterComponent.CharacterPlayingAs = accountComponent.Account.Characters.ElementAt(r.ItemIndex);
-                        player.SendClientMessage("Logged in as " + characterComponent.CharacterPlayingAs.FirstName + "!");
+                        player.SendPlayerInfoMessage(PlayerInfoMessageType.INFO, String.Format("Logged in as {0}{1} {2}{3}!", ChatColor.CornflowerBlue, characterComponent.CharacterPlayingAs.FirstName, characterComponent.CharacterPlayingAs.LastName, ChatColor.White));
                         // player.OnCharacterSelected();
                     }
                 }
