@@ -9,6 +9,7 @@ namespace OpenRP.GameMode.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<Nationality> Nationalities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,6 +26,21 @@ namespace OpenRP.GameMode.Data
                     Id = 1,
                     Name = "World Inventory",
                     MaxWeight = null,
+                }
+            );
+            #endregion
+
+            #region Nationailities Default Data
+            modelBuilder.Entity<Nationality>().HasData(
+                new Nationality
+                {
+                    Id = 1,
+                    Name = "Native of San Andreas",
+                },
+                new Nationality
+                {
+                    Id = 2,
+                    Name = "Russian",
                 }
             );
             #endregion

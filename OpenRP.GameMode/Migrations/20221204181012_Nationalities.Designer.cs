@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpenRP.GameMode.Data;
 
 namespace OpenRP.GameMode.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221204181012_Nationalities")]
+    partial class Nationalities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,6 +24,9 @@ namespace OpenRP.GameMode.Migrations
                     b.Property<ulong>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint unsigned");
+
+                    b.Property<byte?>("CountryOfBirthId")
+                        .HasColumnType("tinyint unsigned");
 
                     b.Property<ushort>("Experience")
                         .ValueGeneratedOnAdd()
@@ -43,6 +48,8 @@ namespace OpenRP.GameMode.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CountryOfBirthId");
+
                     b.ToTable("Accounts");
                 });
 
@@ -57,9 +64,6 @@ namespace OpenRP.GameMode.Migrations
 
                     b.Property<ulong?>("AccountId")
                         .HasColumnType("bigint unsigned");
-
-                    b.Property<byte?>("CountryOfBirthId")
-                        .HasColumnType("tinyint unsigned");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("date");
@@ -81,8 +85,6 @@ namespace OpenRP.GameMode.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
-
-                    b.HasIndex("CountryOfBirthId");
 
                     b.HasIndex("InventoryId");
 
@@ -123,7 +125,7 @@ namespace OpenRP.GameMode.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nationalities");
+                    b.ToTable("Nationality");
 
                     b.HasData(
                         new
@@ -138,21 +140,24 @@ namespace OpenRP.GameMode.Migrations
                         });
                 });
 
+            modelBuilder.Entity("OpenRP.GameMode.Data.Models.Account", b =>
+                {
+                    b.HasOne("OpenRP.GameMode.Data.Models.Nationality", "CountryOfBirth")
+                        .WithMany()
+                        .HasForeignKey("CountryOfBirthId");
+
+                    b.Navigation("CountryOfBirth");
+                });
+
             modelBuilder.Entity("OpenRP.GameMode.Data.Models.Character", b =>
                 {
                     b.HasOne("OpenRP.GameMode.Data.Models.Account", null)
                         .WithMany("Characters")
                         .HasForeignKey("AccountId");
 
-                    b.HasOne("OpenRP.GameMode.Data.Models.Nationality", "CountryOfBirth")
-                        .WithMany()
-                        .HasForeignKey("CountryOfBirthId");
-
                     b.HasOne("OpenRP.GameMode.Data.Models.Inventory", "Inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId");
-
-                    b.Navigation("CountryOfBirth");
 
                     b.Navigation("Inventory");
                 });
