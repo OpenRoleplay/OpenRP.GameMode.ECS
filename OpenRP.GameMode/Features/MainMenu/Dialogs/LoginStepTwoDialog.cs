@@ -25,7 +25,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
             {
                 if (r.Response == DialogResponse.LeftButton)
                 {
-                    if (!AccountHelper.TryToLoginPlayer(player, username, r.InputText))
+                    if (!AccountHelper.TryToLoginPlayer(player, dialogService, username, r.InputText))
                     {
                         LoginStepOneDialog.Open(player, dialogService);
                     }

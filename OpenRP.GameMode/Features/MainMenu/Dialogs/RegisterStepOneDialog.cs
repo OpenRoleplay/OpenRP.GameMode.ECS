@@ -54,7 +54,8 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     }
                     else
                     {
-                        AccountComponent accountComponent = player.GetComponent<AccountComponent>();
+                        player.DestroyComponents<AccountComponent>();
+                        AccountComponent accountComponent = player.AddComponent<AccountComponent>();
 
                         accountComponent.Account = new Account();
                         accountComponent.Account.Username = r.InputText;

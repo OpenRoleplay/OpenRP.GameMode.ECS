@@ -3,6 +3,8 @@ using MySql.Data.MySqlClient;
 using OpenRP.GameMode.Configuration;
 using OpenRP.GameMode.Data.Models;
 using OpenRP.GameMode.Features.Accounts.Components;
+using OpenRP.GameMode.Features.Characters.Helpers;
+using OpenRP.GameMode.Features.MainMenu.Dialogs;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
@@ -77,21 +79,20 @@ namespace OpenRP.GameMode.Features.Accounts.Helpers
             return false;
         }
 
-        public static bool TryToLoginPlayer(Player player, string username, string password)
+        public static bool TryToLoginPlayer(Player player, IDialogService dialogService, string username, string password)
         {
-            AccountComponent accountComponent = player.GetComponent<AccountComponent>();
+            player.DestroyComponents<AccountComponent>();
+            AccountComponent accountComponent = player.AddComponent<AccountComponent>();
 
             if (CheckPassword(username, password))
             {
                 accountComponent.Account = AccountHelper.LoadMainAccount(username);
-                player.SendClientMessage("Logged in");
-                //player.main_account.characters = CharacterHelper.LoadCharacters(username);
+                accountComponent.Account.Characters = CharacterHelper.LoadCharacters(username);
+                accountComponent.LoggedIn = true;
 
-                //CharacterDialogs.OpenCharacterListDialog(player);
-                return true;
+                CharacterSelectionDialog.Open(player, dialogService);
             }
-            player.SendClientMessage("Not logged in");
-            return false;
+            return accountComponent.LoggedIn;
         }
     }
 }

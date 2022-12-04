@@ -6,9 +6,13 @@ using System.Text;
 
 namespace OpenRP.GameMode.Features.Accounts.Components
 {
-    public class AccountComponent : Component
+    public class CharacterComponent : Component
     {
-        public Account Account { get; set; }
-        public bool LoggedIn { get; set; }
+        public Character CharacterPlayingAs { get; set; }
+
+        public CharacterComponent()
+        {
+            CharacterPlayingAs = null;
+        }
     }
 }

@@ -23,11 +23,11 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     {
                         if (r.ItemIndex == 0) // Log in to [CURRENT USERNAME]
                         {
-                            //OpenLoginDialogStep2(player, player.Name);
+                            LoginStepTwoDialog.Open(player, dialogService, player.Name);
                         }
                         else if (r.ItemIndex == 1) // Log in to a different username
                         {
-                            //OpenLoginDialogStep1(player);
+                            LoginStepOneDialog.Open(player, dialogService);
                         }
                         else if (r.ItemIndex == 2) // Create a new account
                         {
@@ -38,7 +38,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     {
                         if (r.ItemIndex == 0) // Log in to a different username
                         {
-                            //OpenLoginDialogStep1(player);
+                            LoginStepOneDialog.Open(player, dialogService);
                         }
                         else if (r.ItemIndex == 1) // Create a new account
                         {

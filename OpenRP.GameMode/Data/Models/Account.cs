@@ -1,4 +1,6 @@
-﻿using SampSharp.Entities;
+﻿using OpenRP.GameMode.Features.Accounts.Helpers;
+using OpenRP.GameMode.Features.Characters.Helpers;
+using SampSharp.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,5 +21,10 @@ namespace OpenRP.GameMode.Data.Models
         public byte Level { get; set; }
         public ushort Experience { get; set; }
         public List<Character> Characters { get; set; }
+
+        public Account()
+        {
+            Characters = new List<Character>();
+        }
     }
 }

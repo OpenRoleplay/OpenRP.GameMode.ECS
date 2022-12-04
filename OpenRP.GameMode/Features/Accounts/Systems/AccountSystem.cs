@@ -16,7 +16,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Systems
         [Event]
         public void OnPlayerConnect(Player player, IDialogService dialogService)
         {
-            player.AddComponent<AccountComponent>();
+            player.AddComponent<CharacterComponent>();
         }
     }
 }
