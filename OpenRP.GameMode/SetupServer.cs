@@ -27,7 +27,7 @@ namespace OpenRP.GameMode
             serverService.ManualVehicleEngineAndLights();
 
             // CultureInfo
-            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            CultureInfo.CurrentCulture = new CultureInfo("nl-NL", false);
         }
     }
 }

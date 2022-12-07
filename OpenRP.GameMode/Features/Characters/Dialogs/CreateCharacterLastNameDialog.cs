@@ -16,7 +16,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
             InputDialog characterDialog = new InputDialog();
 
             characterDialog.Caption = DialogConstants.Prefix + "Character Creation" + DialogConstants.Separator + "Last name";
-            characterDialog.Content = ChatColor.White + "Pick a last name for your character. The last name of your character can be up to 35 characters long.";
+            characterDialog.Content = ChatColor.White + "Pick a last name for your character. The first name of your character can be up to 35 characters long.";
             characterDialog.Button1 = DialogConstants.Next;
             characterDialog.Button2 = DialogConstants.Previous;
 
@@ -24,8 +24,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
             {
                 if (r.Response == DialogResponse.LeftButton)
                 {
-                    player.DestroyComponents<CharacterCreationComponent>();
-                    CharacterCreationComponent charCreationComponent = player.AddComponent<CharacterCreationComponent>();
+                    CharacterCreationComponent charCreationComponent = player.GetComponent<CharacterCreationComponent>();
 
                     if (string.IsNullOrEmpty(r.InputText))
                     {
@@ -52,7 +51,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     {
                         charCreationComponent.CreatingCharacter.LastName = r.InputText.Trim();
 
-                        // Step 4
+                        CreateCharacterDateOfBirthDialog.Open(player, dialogService);
                     }
                 }
                 else

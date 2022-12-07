@@ -30,8 +30,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     {
                         if (r.Response == DialogResponse.LeftButton)
                         {
-                            player.DestroyComponents<CharacterCreationComponent>();
-                            CharacterCreationComponent charCreationComponent = player.AddComponent<CharacterCreationComponent>();
+                            CharacterCreationComponent charCreationComponent = player.GetComponent<CharacterCreationComponent>();
 
                             if (String.IsNullOrEmpty(r.InputText))
                             {

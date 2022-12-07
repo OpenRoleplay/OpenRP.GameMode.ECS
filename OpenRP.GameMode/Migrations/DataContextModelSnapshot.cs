@@ -46,6 +46,32 @@ namespace OpenRP.GameMode.Migrations
                     b.ToTable("Accounts");
                 });
 
+            modelBuilder.Entity("OpenRP.GameMode.Data.Models.Actor", b =>
+                {
+                    b.Property<ulong>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint unsigned");
+
+                    b.Property<float>("Angle")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Model")
+                        .HasColumnType("int");
+
+                    b.Property<float>("X")
+                        .HasColumnType("float");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("float");
+
+                    b.Property<float>("Z")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Actors");
+                });
+
             modelBuilder.Entity("OpenRP.GameMode.Data.Models.Character", b =>
                 {
                     b.Property<ulong>("Id")
