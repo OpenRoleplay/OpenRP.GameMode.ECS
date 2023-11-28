@@ -18,7 +18,6 @@ namespace OpenRP.GameMode.Data.Models
 
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
-        public Nationality CountryOfBirth { get; set; }
         [Column(TypeName = "varchar(30)")]
         public string Accent { get; set; }
         public Inventory Inventory { get; set; }

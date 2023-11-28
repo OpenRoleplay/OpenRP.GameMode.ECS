@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "samp-server": {
+    "Start Server": {
       "commandName": "Executable",
-      "executablePath": "C:\\Users\\CLich\\Desktop\\OpenRP Server\\samp-server.exe",
-      "workingDirectory": "C:\\Users\\CLich\\Desktop\\OpenRP Server"
+      "executablePath": "C:\\Users\\CLich\\Desktop\\OpenRP\\Server\\omp-server.exe",
+      "workingDirectory": "C:\\Users\\CLich\\Desktop\\OpenRP\\Server\\"
     }
   }
 }

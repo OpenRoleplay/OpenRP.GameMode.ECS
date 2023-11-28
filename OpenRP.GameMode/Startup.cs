@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OpenRP.GameMode.Features.Chat.Handlers;
 using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
+using SampSharp.Entities.SAMP.Commands;
 
 namespace OpenRP.GameMode
 {
@@ -10,6 +12,7 @@ namespace OpenRP.GameMode
         {
             // TODO: Add services and systems to the services collection
             services.AddSystemsInAssembly();
+            services.AddSingleton<IPlayerCommandService, PlayerCommandServiceHandler>();
         }
 
         public void Configure(IEcsBuilder builder)

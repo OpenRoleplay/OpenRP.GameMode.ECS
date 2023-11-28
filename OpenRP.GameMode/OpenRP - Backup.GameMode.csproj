@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <BaseOutputPath>C:\Users\CLich\Desktop\OpenRP\Server\gamemode</BaseOutputPath>
+        <BaseOutputPath>C:\Users\CLich\Desktop\OpenRP Server\gamemode</BaseOutputPath>
     </PropertyGroup>
 
     <ItemGroup>

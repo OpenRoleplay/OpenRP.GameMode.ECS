@@ -33,6 +33,13 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                         characterComponent.CharacterPlayingAs = accountComponent.Account.Characters.ElementAt(r.ItemIndex);
                         player.SendPlayerInfoMessage(PlayerInfoMessageType.INFO, String.Format("Logged in as {0}{1} {2}{3}!", ChatColor.CornflowerBlue, characterComponent.CharacterPlayingAs.FirstName, characterComponent.CharacterPlayingAs.LastName, ChatColor.White));
                         // player.OnCharacterSelected();
+
+                        // Temporary for testing
+                        player.ToggleSpectating(false);
+                        player.ToggleControllable(true);
+                        player.SetSpawnInfo(0, 1, new Vector3(2273.5562, 82.3747, 26.4844), 358);
+                        player.Name = String.Format("{0}_{1}", characterComponent.CharacterPlayingAs.FirstName, characterComponent.CharacterPlayingAs.LastName);
+                        player.Spawn();
                     }
                 }
                 else

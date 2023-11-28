@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SampSharp.Core" Version="0.10.1" />
+    <PackageReference Include="SampSharp.GameMode" Version="0.10.1" />
+  </ItemGroup>
+
+</Project>
