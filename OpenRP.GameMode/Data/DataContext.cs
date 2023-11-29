@@ -41,6 +41,12 @@ namespace OpenRP.GameMode.Data
             .Property(b => b.Experience)
             .HasDefaultValue(0);
             #endregion
+
+            #region Characters Default Values
+            modelBuilder.Entity<Character>()
+            .Property(b => b.Skin)
+            .HasDefaultValue(26);
+            #endregion
             #endregion
         }
     }
