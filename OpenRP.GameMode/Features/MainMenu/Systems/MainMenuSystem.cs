@@ -11,6 +11,11 @@ namespace OpenRP.GameMode.Features.MainMenu.Systems
         [Event]
         public void OnPlayerConnect(Player player, IDialogService dialogService)
         {
+        }
+
+        [Event]
+        public void OnPlayerRequestClass(Player player, int classid, IDialogService dialogService)
+        {
             // Toggles
             player.ToggleSpectating(true);
             player.ToggleControllable(false);
