@@ -37,7 +37,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                         // Temporary for testing
                         player.ToggleSpectating(false);
                         player.ToggleControllable(true);
-                        player.SetSpawnInfo(0, 1, new Vector3(2273.5562, 82.3747, 26.4844), 358);
+                        player.SetSpawnInfo(0, characterComponent.CharacterPlayingAs.Skin, new Vector3(2273.5562, 82.3747, 26.4844), 358);
                         player.Name = String.Format("{0}_{1}", characterComponent.CharacterPlayingAs.FirstName, characterComponent.CharacterPlayingAs.LastName);
                         player.Spawn();
                     }

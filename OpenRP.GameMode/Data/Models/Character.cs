@@ -21,5 +21,6 @@ namespace OpenRP.GameMode.Data.Models
         [Column(TypeName = "varchar(30)")]
         public string Accent { get; set; }
         public Inventory Inventory { get; set; }
+        public int Skin { get; set; }
     }
 }
