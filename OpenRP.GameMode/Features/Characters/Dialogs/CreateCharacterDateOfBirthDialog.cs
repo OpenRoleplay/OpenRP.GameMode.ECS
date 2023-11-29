@@ -3,6 +3,7 @@ using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Components;
 using OpenRP.GameMode.Features.Accounts.Helpers;
 using OpenRP.GameMode.Features.Characters.Components;
+using OpenRP.GameMode.Features.Characters.Helpers;
 using OpenRP.GameMode.Features.Chat.Constants;
 using SampSharp.Entities.SAMP;
 using System;
@@ -39,6 +40,8 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                                 charCreationComponent.CreatingCharacter.DateOfBirth = characterDoB;
 
                                 // Next Step
+                                CharacterHelper.CreateCharacter(player);
+                                CharacterSelectionDialog.Open(player, dialogService);
                             } else
                             {
                                 Open(player, dialogService);
