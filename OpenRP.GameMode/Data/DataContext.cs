@@ -9,6 +9,8 @@ namespace OpenRP.GameMode.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<InventoryItem> InventoryItems { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Actor> Actors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

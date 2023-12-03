@@ -1,4 +1,6 @@
-﻿namespace OpenRP.GameMode.Data.Models
+﻿using System.Collections.Generic;
+
+namespace OpenRP.GameMode.Data.Models
 {
     public class Inventory
     {
@@ -8,5 +10,6 @@
         /// Max weight in Grams
         /// </summary>
         public uint? MaxWeight { get; set; }
+        public List<InventoryItem> Items { get; set; }
     }
 }

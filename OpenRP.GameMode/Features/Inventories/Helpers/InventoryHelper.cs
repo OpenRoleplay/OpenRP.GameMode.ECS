@@ -2,6 +2,7 @@
 using OpenRP.GameMode.Configuration;
 using OpenRP.GameMode.Data;
 using OpenRP.GameMode.Data.Models;
+using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +29,13 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                 Console.WriteLine(ex.ToString());
             }
             return null;
+        }
+
+        public static void OpenDialog(this Inventory inventory, Player for_player)
+        {
+            //for_player.openedInventoryItems = inventory.GetInventoryItems();
+
+            //this.OpenInventoryItemsDialog(for_player, for_player.openedInventoryItems, args);
         }
     }
 }
