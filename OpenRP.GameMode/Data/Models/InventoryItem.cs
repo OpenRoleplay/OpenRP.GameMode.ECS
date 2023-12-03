@@ -8,6 +8,7 @@ namespace OpenRP.GameMode.Data.Models
     {
         public ulong Id { get; set; }
         public Item Item { get; set; }
+        public uint Amount { get; set; }
         public uint UsesRemaining { get; set; }
         public bool KeepOnDeath { get; set; }
         public bool CanDrop { get; set; }
