@@ -5,6 +5,7 @@ using OpenRP.GameMode.Data.Models;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OpenRP.GameMode.Features.Inventories.Helpers
@@ -29,6 +30,14 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                 Console.WriteLine(ex.ToString());
             }
             return null;
+        }
+
+        public static List<InventoryItem> GetInventoryItems(this Inventory inventory)
+        {
+            using (var context = new DataContext())
+            {
+                return context.Inventories.Find(inventory.Id).Items;
+            }
         }
 
         public static void OpenDialog(this Inventory inventory, Player for_player)
