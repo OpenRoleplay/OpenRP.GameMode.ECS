@@ -13,7 +13,7 @@ namespace OpenRP.GameMode.Features.Admin.Commands
     public class SetSkinCommand : ISystem
     {
         [PlayerCommand]
-        public void SetSkin(Player player, int skin_id, IWorldService worldService)
+        public void SetSkin(Player player, int skin_id)
         {
             CharacterComponent characterComponent = player.GetComponent<CharacterComponent>();
 
@@ -23,7 +23,7 @@ namespace OpenRP.GameMode.Features.Admin.Commands
                 {
                     Character character = context.Characters.Find(characterComponent.CharacterPlayingAs.Id);
 
-                    player.Skin = character.Skin = skin_id;
+                    player.Skin = character.Skin = characterComponent.CharacterPlayingAs.Skin = skin_id;
                     context.SaveChanges();
                 }
             }
