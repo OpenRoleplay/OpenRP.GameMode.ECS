@@ -10,7 +10,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
 {
     public static class InventoryHelper
     {
-        public static ulong? CreateInventory(string inventoryName, uint? maxWeightInGrams)
+        public static Inventory CreateInventory(string inventoryName, uint? maxWeightInGrams)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                     context.Inventories.Add(newInventory);
                     context.SaveChanges();
 
-                    return newInventory.Id;
+                    return newInventory;
                 }
             }
             catch (Exception ex)
