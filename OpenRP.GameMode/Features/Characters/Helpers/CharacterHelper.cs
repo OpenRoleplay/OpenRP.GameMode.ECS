@@ -1,15 +1,18 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using OpenRP.GameMode.Configuration;
+using OpenRP.GameMode.Data;
 using OpenRP.GameMode.Data.Models;
 using OpenRP.GameMode.Features.Accounts.Components;
 using OpenRP.GameMode.Features.Characters.Components;
+using OpenRP.GameMode.Features.Inventories.Helpers;
 using OpenRP.GameMode.Features.MainMenu.Dialogs;
 using Org.BouncyCastle.Asn1.Mozilla;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace OpenRP.GameMode.Features.Characters.Helpers
 {
@@ -66,6 +69,21 @@ namespace OpenRP.GameMode.Features.Characters.Helpers
                 Console.WriteLine(ex.ToString());
             }
             return false;
+        }
+
+        public static Inventory GetCharacterInventory(this Character character)
+        {
+            using (var context = new DataContext())
+            {
+                Character characterData = context.Characters.Find(character.Id);
+
+                if (characterData.Inventory == null)
+                {
+                    characterData.Inventory = InventoryHelper.CreateInventory("Character Inventory", 10000);
+                }
+                context.SaveChanges();
+                return characterData.Inventory;
+            }
         }
     }
 }
