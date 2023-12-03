@@ -1,6 +1,6 @@
-﻿using OpenRP.GameMode.Definitions.Constants;
-using OpenRP.GameMode.Features.Accounts.Helpers;
+﻿using OpenRP.GameMode.Features.Accounts.Helpers;
 using OpenRP.GameMode.Features.Chat.Constants;
+using OpenRP.GameMode.Helpers;
 using SampSharp.Entities.SAMP;
 
 namespace OpenRP.GameMode.Features.MainMenu.Dialogs
@@ -9,7 +9,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
     {
         public static void Open(Player player, IDialogService dialogService)
         {
-            ListDialog mainMenuDialog = new ListDialog(ChatColor.White + "Welcome to Open Roleplay!", DialogConstants.Next, DialogConstants.Previous);
+            ListDialog mainMenuDialog = new ListDialog(DialogHelper.GetTitle("Welcome!"), DialogHelper.Next, DialogHelper.Previous);
 
             bool doesAccountExist = AccountHelper.DoesAccountExist(player.Name);
 

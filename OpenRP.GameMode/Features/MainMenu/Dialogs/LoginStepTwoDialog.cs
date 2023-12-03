@@ -1,6 +1,6 @@
-﻿using OpenRP.GameMode.Definitions.Constants;
-using OpenRP.GameMode.Features.Accounts.Helpers;
+﻿using OpenRP.GameMode.Features.Accounts.Helpers;
 using OpenRP.GameMode.Features.Chat.Constants;
+using OpenRP.GameMode.Helpers;
 using SampSharp.Entities.SAMP;
 
 namespace OpenRP.GameMode.Features.MainMenu.Dialogs
@@ -11,10 +11,10 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
         {
             InputDialog loginDialog = new InputDialog();
 
-            loginDialog.Caption = DialogConstants.Prefix + "Log in to " + ChatColor.CornflowerBlue + username + DialogConstants.Separator + "Password"; 
+            loginDialog.Caption = DialogHelper.GetTitle("Log in to " + ChatColor.CornflowerBlue + username, "Password"); 
             loginDialog.Content = ChatColor.White + "You are logging in to the account with the username " + ChatColor.CornflowerBlue + username + ChatColor.White + ". What is your password?";
-            loginDialog.Button1 = DialogConstants.Next;
-            loginDialog.Button2 = DialogConstants.Previous;
+            loginDialog.Button1 = DialogHelper.Next;
+            loginDialog.Button2 = DialogHelper.Previous;
             loginDialog.IsPassword = true;
 
             void StepOneDialogHandler(InputDialogResponse r)

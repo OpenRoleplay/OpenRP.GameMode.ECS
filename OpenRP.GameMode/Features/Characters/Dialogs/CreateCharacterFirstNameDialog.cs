@@ -1,9 +1,9 @@
 ﻿using OpenRP.GameMode.Data.Models;
-using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Components;
 using OpenRP.GameMode.Features.Accounts.Helpers;
 using OpenRP.GameMode.Features.Characters.Components;
 using OpenRP.GameMode.Features.Chat.Constants;
+using OpenRP.GameMode.Helpers;
 using SampSharp.Entities.SAMP;
 using System;
 
@@ -15,10 +15,10 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
         {
             InputDialog characterDialog = new InputDialog();
 
-            characterDialog.Caption = DialogConstants.Prefix + "Character Creation" + DialogConstants.Separator + "First name";
+            characterDialog.Caption = DialogHelper.GetTitle("Character Creation", "First name");
             characterDialog.Content = ChatColor.White + "Pick a first name for your character. The first name of your character can be up to 35 characters long.";
-            characterDialog.Button1 = DialogConstants.Next;
-            characterDialog.Button2 = DialogConstants.Previous;
+            characterDialog.Button1 = DialogHelper.Next;
+            characterDialog.Button2 = DialogHelper.Previous;
 
             void CreateCharacterFirstNameDialogHandler(InputDialogResponse r)
             {
@@ -29,7 +29,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 
                     if (string.IsNullOrEmpty(r.InputText))
                     {
-                        MessageDialog firstNameRequired = new MessageDialog(DialogConstants.Prefix + "Character Creation" + DialogConstants.Separator + "First name", ChatColor.White + "The first name for your character is required!", DialogConstants.Retry);
+                        MessageDialog firstNameRequired = new MessageDialog(DialogHelper.GetTitle("Character Creation", "First name"), ChatColor.White + "The first name for your character is required!", DialogHelper.Retry);
 
                         void FirstNameRequiredDialogHandler(MessageDialogResponse r)
                         {
@@ -40,7 +40,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     }
                     else if (r.InputText.Length > 35)
                     {
-                        MessageDialog firstNameTooLongDialog = new MessageDialog(DialogConstants.Prefix + "Character Creation" + DialogConstants.Separator + "First name", ChatColor.White + "The first name for your character may not be longer than 35 characters.", DialogConstants.Retry);
+                        MessageDialog firstNameTooLongDialog = new MessageDialog(DialogHelper.GetTitle("Character Creation", "First name"), ChatColor.White + "The first name for your character may not be longer than 35 characters.", DialogHelper.Retry);
                         
                         void FirstNameTooLongDialogHandler(MessageDialogResponse r)
                         {

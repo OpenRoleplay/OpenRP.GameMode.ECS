@@ -1,8 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using OpenRP.GameMode.Configuration;
-using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Components;
 using OpenRP.GameMode.Features.Chat.Constants;
+using OpenRP.GameMode.Helpers;
 using SampSharp.Entities.SAMP;
 
 namespace OpenRP.GameMode.Features.MainMenu.Dialogs
@@ -13,10 +13,10 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
         {
             InputDialog registerDialog = new InputDialog();
 
-            registerDialog.Caption = DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password Confirmation";
+            registerDialog.Caption = DialogHelper.GetTitle("Registration", "Password Confirmation");
             registerDialog.Content = ChatColor.White + "Confirm your password.";
-            registerDialog.Button1 = DialogConstants.Next;
-            registerDialog.Button2 = DialogConstants.Previous;
+            registerDialog.Button1 = DialogHelper.Next;
+            registerDialog.Button2 = DialogHelper.Previous;
             registerDialog.IsPassword = true;
 
             void StepTwoDialogHandler(InputDialogResponse r)
@@ -27,7 +27,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
 
                     if (BCrypt.Net.BCrypt.Verify(r.InputText, accountComponent?.Account?.Password))
                     {
-                        MessageDialog passwordSetDialog = new MessageDialog(DialogConstants.Prefix + "Registration" + DialogConstants.Separator + "Password Confirmation", ChatColor.White + "Your password has been set. You may now log in to your account.", DialogConstants.Next);
+                        MessageDialog passwordSetDialog = new MessageDialog(DialogHelper.GetTitle("Registration", "Password Confirmation"), ChatColor.White + "Your password has been set. You may now log in to your account.", DialogHelper.Next);
 
                         void PasswordSetDialogHandler(MessageDialogResponse r)
                         {
@@ -48,7 +48,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     } 
                     else
                     {
-                        MessageDialog passwordsDoNotMatchDialog = new MessageDialog(DialogConstants.Prefix + "Password Confirmation" + DialogConstants.Separator + "Password", ChatColor.White + "The passwords you have entered do not match.", DialogConstants.Retry);
+                        MessageDialog passwordsDoNotMatchDialog = new MessageDialog(DialogHelper.GetTitle("Registration", "Password Confirmation"), ChatColor.White + "The passwords you have entered do not match.", DialogHelper.Retry);
 
                         void PasswordsDoNotMatchDialogHandler(MessageDialogResponse r)
                         {

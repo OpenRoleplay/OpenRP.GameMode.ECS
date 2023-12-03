@@ -1,6 +1,6 @@
-﻿using OpenRP.GameMode.Definitions.Constants;
-using OpenRP.GameMode.Features.Accounts.Helpers;
+﻿using OpenRP.GameMode.Features.Accounts.Helpers;
 using OpenRP.GameMode.Features.Chat.Constants;
+using OpenRP.GameMode.Helpers;
 using SampSharp.Entities.SAMP;
 
 namespace OpenRP.GameMode.Features.MainMenu.Dialogs
@@ -11,10 +11,10 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
         {
             InputDialog loginDialog = new InputDialog();
 
-            loginDialog.Caption = DialogConstants.Prefix + "Login" + DialogConstants.Separator + "Username";
+            loginDialog.Caption = DialogHelper.GetTitle("Login", "Username");
             loginDialog.Content = ChatColor.White + "What is your username?";
-            loginDialog.Button1 = DialogConstants.Next;
-            loginDialog.Button2 = DialogConstants.Previous;
+            loginDialog.Button1 = DialogHelper.Next;
+            loginDialog.Button2 = DialogHelper.Previous;
 
             void StepOneDialogHandler(InputDialogResponse r)
             {
@@ -26,7 +26,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
                     }
                     else
                     {
-                        MessageDialog accountDoesNotExist = new MessageDialog(DialogConstants.Prefix + "Login" + DialogConstants.Separator + "Username", ChatColor.White + "There is no account with this username.", DialogConstants.Retry);
+                        MessageDialog accountDoesNotExist = new MessageDialog(DialogHelper.GetTitle("Login", "Username"), ChatColor.White + "There is no account with this username.", DialogHelper.Retry);
                         void RetryUsernameDialogHandler(MessageDialogResponse r)
                         {
                             LoginStepOneDialog.Open(player, dialogService);

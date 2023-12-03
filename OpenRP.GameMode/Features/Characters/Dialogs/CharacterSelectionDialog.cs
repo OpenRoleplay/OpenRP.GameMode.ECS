@@ -1,9 +1,9 @@
 ﻿using OpenRP.GameMode.Data.Models;
-using OpenRP.GameMode.Definitions.Constants;
 using OpenRP.GameMode.Features.Accounts.Components;
 using OpenRP.GameMode.Features.Chat.Constants;
 using OpenRP.GameMode.Features.Chat.Enums;
 using OpenRP.GameMode.Features.Chat.Helpers;
+using OpenRP.GameMode.Helpers;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace OpenRP.GameMode.Features.MainMenu.Dialogs
     {
         public static void Open(Player player, IDialogService dialogService)
         {
-            ListDialog choiceDialog = new ListDialog(ChatColor.White + "Character Selection", DialogConstants.Next, DialogConstants.Quit);
+            ListDialog choiceDialog = new ListDialog(DialogHelper.GetTitle("Character Selection"), DialogHelper.Next, DialogHelper.Quit);
 
             AccountComponent accountComponent = player.GetComponent<AccountComponent>();
 
