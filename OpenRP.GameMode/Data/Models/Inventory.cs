@@ -7,6 +7,6 @@
         /// <summary>
         /// Max weight in Grams
         /// </summary>
-        public int? MaxWeight { get; set; }
+        public uint? MaxWeight { get; set; }
     }
 }
