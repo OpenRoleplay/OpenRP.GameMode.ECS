@@ -13,5 +13,6 @@ namespace OpenRP.GameMode.Data.Models
         public bool KeepOnDeath { get; set; }
         public bool CanDrop { get; set; }
         public bool CanDestroy { get; set; }
+        public ulong InventoryId { get; set; }
     }
 }
