@@ -11,6 +11,7 @@ namespace OpenRP.GameMode.Data
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<InventoryItem> InventoryItems { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<Actor> Actors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,24 +31,6 @@ namespace OpenRP.GameMode.Data
                     MaxWeight = null,
                 }
             );
-            #endregion
-            #endregion
-
-            #region Default Values
-            #region Accounts Default Values
-            modelBuilder.Entity<Account>()
-            .Property(b => b.Level)
-            .HasDefaultValue(1);
-
-            modelBuilder.Entity<Account>()
-            .Property(b => b.Experience)
-            .HasDefaultValue(0);
-            #endregion
-
-            #region Characters Default Values
-            modelBuilder.Entity<Character>()
-            .Property(b => b.Skin)
-            .HasDefaultValue(26);
             #endregion
             #endregion
         }

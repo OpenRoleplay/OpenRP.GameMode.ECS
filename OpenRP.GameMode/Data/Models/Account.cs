@@ -13,8 +13,8 @@ namespace OpenRP.GameMode.Data.Models
         [Required]
         [Column(TypeName = "char(60)")]
         public string Password { get; set; }
-        public byte Level { get; set; }
-        public ushort Experience { get; set; }
+        public byte Level { get; set; } = 1;
+        public ushort Experience { get; set; } = 0;
         public List<Character> Characters { get; set; }
 
         public Account()
