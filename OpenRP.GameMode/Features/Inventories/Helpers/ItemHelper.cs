@@ -9,7 +9,23 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
     {
         public static bool IsItemWallet(this Item item)
         {
-            if (item.Type.Name == "Wallet")
+            if (item.UseType.Name == "Wallet")
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool IsItemSkin(this Item item)
+        {
+            if (item.UseType.Name == "Skin")
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool IsItemAttachment(this Item item)
+        {
+            if (item.UseType.Name == "Attachment")
             {
                 return true;
             }

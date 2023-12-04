@@ -14,5 +14,6 @@ namespace OpenRP.GameMode.Data.Models
         public bool CanDrop { get; set; }
         public bool CanDestroy { get; set; }
         public ulong InventoryId { get; set; }
+        public string AdditionalData { get; set; }
     }
 }
