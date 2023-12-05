@@ -7,7 +7,10 @@ namespace OpenRP.GameMode.Data.Models
     public class InventoryItem
     {
         public ulong Id { get; set; }
+        #region Item
+        public ulong ItemId { get; set; }
         public Item Item { get; set; }
+        #endregion
         public uint Amount { get; set; }
         public uint UsesRemaining { get; set; }
         public bool KeepOnDeath { get; set; }

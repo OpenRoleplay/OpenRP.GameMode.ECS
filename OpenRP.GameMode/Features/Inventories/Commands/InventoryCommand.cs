@@ -8,17 +8,16 @@ using System.Collections.Generic;
 using System.Text;
 using OpenRP.GameMode.Features.Characters.Helpers;
 using SampSharp.Entities;
+using OpenRP.GameMode.Features.Inventories.Dialogs;
 
 namespace OpenRP.GameMode.Features.Inventories.Commands
 {
     public class InventoryCommand : ISystem
     {
         [PlayerCommand]
-        public void Inventory(Player player)
+        public void Inventory(Player player, IDialogService dialogService)
         {
-            CharacterComponent characterComponent = player.GetComponent<CharacterComponent>();
-
-            characterComponent.CharacterPlayingAs.GetCharacterInventory();
+            InventoryDialog.Open(player, dialogService);
         }
     }
 }

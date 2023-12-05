@@ -19,7 +19,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
             CharacterComponent characterComponent = player.GetComponent<CharacterComponent>();
             if (characterComponent != null)
             {
-                OpenInventoryComponent openInventoryComponent = player.AddComponent<OpenInventoryComponent>();
+                OpenInventoryComponent openInventoryComponent = player.GetComponent<OpenInventoryComponent>();
 
                 if(openInventoryComponent != null && openInventoryComponent.openedInventory != null)
                 {
@@ -53,7 +53,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
                         inventoryColumnHeaders.Add(ChatColor.CornflowerBlue + "Extra Information");
                     }
 
-                    TablistDialog inventory = new TablistDialog(inventory_name, String.Join("\\t", inventoryColumnHeaders), "Details", "Cancel");
+                    TablistDialog inventory = new TablistDialog(inventory_name, "Details", "Cancel", inventoryColumnHeaders.ToArray());
 
                     foreach (InventoryItem inventoryItem in inventoryItemsToShow)
                     {

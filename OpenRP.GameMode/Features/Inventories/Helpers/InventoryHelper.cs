@@ -38,7 +38,11 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
             using (var context = new DataContext())
             {
                 //return Inventory.All.SingleOrDefault(i => i.GetInventoryItems().Any(i => i.GetItem().IsItemInventory() && i.inventory_item_use_value == this.inventory_id));//  i.GetInventory() == this));
-                return context.Inventories.Include(i => i.Items).FirstOrDefault(i => i.Items.Any(j => j.Item.IsItemInventory() && ItemAdditionalData.Parse(j.AdditionalData).GetString("INVENTORY") == inventory.Id.ToString()));
+                List<Inventory> inventories = context.Inventories
+                    .Include(i => i.Items)
+                    .ToList();
+
+                return inventories.SingleOrDefault(i => i.GetInventoryItems().Any(j => j.GetItem().IsItemInventory() && ItemAdditionalData.Parse(j.AdditionalData).GetString("INVENTORY") == inventory.Id.ToString()));
             }
         }
 
@@ -58,9 +62,14 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
 
         public static List<InventoryItem> GetInventoryItems(this Inventory inventory)
         {
-            using (var context = new DataContext())
+            if (inventory.Items != null)
             {
-                return context.Inventories.Find(inventory.Id).Items;
+                return inventory.Items;
+            } else {
+                using (var context = new DataContext())
+                {
+                    return context.Inventories.Find(inventory.Id).Items;
+                }
             }
         }
 
