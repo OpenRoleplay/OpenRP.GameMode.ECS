@@ -47,17 +47,17 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
 
         public static string GetName(this InventoryItem inventoryItem)
         {
-            return inventoryItem.Item.Name;
+            return inventoryItem.GetItem().Name;
         }
 
         public static uint GetWeight(this InventoryItem inventoryItem)
         {
-            return inventoryItem.Item.Weight;
+            return inventoryItem.GetItem().Weight;
         }
 
         public static Item GetItem(this InventoryItem inventoryItem)
         {
-            return inventoryItem.Item;
+            return DataMemory.GetItems().FirstOrDefault(i => i.Id == inventoryItem.ItemId);
         }
 
         public static uint GetTotalWeight(this InventoryItem inventoryItem)
