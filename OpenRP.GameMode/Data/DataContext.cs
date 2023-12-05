@@ -48,7 +48,7 @@ namespace OpenRP.GameMode.Data
                 {
                     Id = 1
                     , Name = "Kir Jong Uniform"
-                    , Description = "Introducing the Kir Jong Uniform – because even mad scientists need to look sharp while plotting world domination! This ensemble screams 'I'm up to no good,' with its sleek black suit, buttoned-up jacket, and a hint of red that says, 'I'm the boss, but I have a sense of style.' Perfect for leading Russian separatists, running secret research facilities, and, of course, experimenting on humans. Complete the look and let the world know you mean business... even if it's highly unethical!"
+                    , Description = "Introducing the Kir Jong Uniform - because even mad scientists need to look sharp while plotting world domination! This ensemble screams 'I'm up to no good,' with its sleek black suit, buttoned-up jacket, and a hint of red that says, 'I'm the boss, but I have a sense of style.' Perfect for leading Russian separatists, running secret research facilities, and, of course, experimenting on humans. Complete the look and let the world know you mean business... even if it's highly unethical!"
                     , UseTypeId = 1
                     , Weight = 500
                     , CanDrop = false

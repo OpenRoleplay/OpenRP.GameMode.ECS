@@ -92,8 +92,22 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
 
                         inventory.Add(inventoryColumns.ToArray());
                     }
-                    //inventory.Response += OpenInventoryDialogResponse.InventoryDialog_Response;
-                    dialogService.Show(player, inventory);
+
+                    void InventoryItemsDialogHandler(TablistDialogResponse r)
+                    {
+                        if (r.Response == DialogResponse.LeftButton)
+                        {
+                            openInventoryComponent.selectedInventoryItem = openInventoryComponent.openedInventoryItems.ElementAt(r.ItemIndex);
+
+                            InventoryItemSelectedDialog.Open(player, openInventoryComponent, dialogService);
+                        }
+                        else
+                        {
+                            player.DestroyComponents<OpenInventoryComponent>();
+                        }
+                    }
+
+                    dialogService.Show(player, inventory, InventoryItemsDialogHandler);
                 }
             }
         }

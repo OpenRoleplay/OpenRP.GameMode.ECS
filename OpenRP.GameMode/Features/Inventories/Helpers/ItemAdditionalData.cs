@@ -43,11 +43,11 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
         {
             if (value)
             {
-                this.custom_data_dictionary[key] = "1";
+                this.custom_data_dictionary[key.ToUpper()] = "1";
             }
             else
             {
-                this.custom_data_dictionary.Remove(key);
+                this.custom_data_dictionary.Remove(key.ToUpper());
             }
         }
 
@@ -55,17 +55,17 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
         {
             if (!String.IsNullOrEmpty(value))
             {
-                this.custom_data_dictionary[key] = value;
+                this.custom_data_dictionary[key.ToUpper()] = value;
             }
             else
             {
-                this.custom_data_dictionary.Remove(key);
+                this.custom_data_dictionary.Remove(key.ToUpper());
             }
         }
 
         public string GetString(string key)
         {
-            if (this.custom_data_dictionary.TryGetValue(key, out string value))
+            if (this.custom_data_dictionary.TryGetValue(key.ToUpper(), out string value))
             {
                 return value;
             }
@@ -74,7 +74,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
 
         public int? GetInt(string key)
         {
-            if (int.TryParse(this.GetString(key), out int value))
+            if (int.TryParse(this.GetString(key.ToUpper()), out int value))
             {
                 return value;
             }
@@ -85,7 +85,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
         {
             try
             {
-                return Convert.ToBoolean(this.GetInt(key));
+                return Convert.ToBoolean(this.GetInt(key.ToUpper()));
             }
             catch (Exception ex)
             {
@@ -114,7 +114,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                 {
                     newCustomDataString.Append(";");
                 }
-                newCustomDataString.Append(string.Format("[{0}={1}]", key_value.Key, key_value.Value));
+                newCustomDataString.Append(string.Format("[{0}={1}]", key_value.Key.ToUpper(), key_value.Value));
             }
 
             this.custom_data = newCustomDataString.ToString();
