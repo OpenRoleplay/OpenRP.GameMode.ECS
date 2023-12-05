@@ -9,6 +9,7 @@ using OpenRP.GameMode.Features.Characters.Components;
 using OpenRP.GameMode.Features.Inventories.Helpers;
 using OpenRP.GameMode.Features.MainMenu.Dialogs;
 using Org.BouncyCastle.Asn1.Mozilla;
+using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,70 @@ namespace OpenRP.GameMode.Features.Characters.Helpers
                 context.SaveChanges();
                 return characterData.Inventory;
             }
+        }
+
+        public static string GetCharacterName(this Character character)
+        {
+            return String.Format("{0} {1}", character.FirstName, character.LastName);
+        }
+
+        public static Player GetCharacterPlayer(this Character character, IEntityManager entityManager)
+        {
+            foreach (Player player in entityManager.GetComponents<Player>().Where(p => p.GetComponent<CharacterComponent>()?.CharacterPlayingAs?.Id == character.Id))
+            {
+                return player;
+            }
+            return null;
+        }
+
+        public static List<InventoryItem> GetCharacterInventorySkins(this Character character)
+        {
+            return character.GetCharacterInventory().GetInventoryItems().Where(i => i.GetItem().IsItemSkin()).ToList();
+        }
+
+        public static bool SetCharacterWearingInventorySkin(this Character character, InventoryItem inventoryItem, IEntityManager entityManager)
+        {
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    foreach (InventoryItem skin in character.GetCharacterInventorySkins())
+                    {
+                        ItemAdditionalData itemAdditionalData = ItemAdditionalData.Parse(skin.AdditionalData);
+
+                        if (itemAdditionalData.GetBoolean("WEARING") != null && itemAdditionalData.GetBoolean("WEARING") == true)
+                        {
+                            itemAdditionalData.SetBoolean("WEARING", false);
+
+                            InventoryItem inventoryItemToUpdate = context.InventoryItems.Find(skin.Id);
+                            inventoryItemToUpdate.AdditionalData = itemAdditionalData.ToString();
+                        }
+                    }
+
+                    ItemAdditionalData itemAdditionalDataNewSkin = ItemAdditionalData.Parse(inventoryItem.AdditionalData);
+
+                    itemAdditionalDataNewSkin.SetBoolean("WEARING", true);
+
+                    InventoryItem inventoryItemToUpdateNewSkin = context.InventoryItems.Find(inventoryItem.Id);
+                    inventoryItemToUpdateNewSkin.AdditionalData = itemAdditionalDataNewSkin.ToString();
+
+                    int? newSkin = itemAdditionalDataNewSkin.GetInt("SKIN");
+                    if (newSkin != null)
+                    {
+                        Character characterToUpdate = context.Characters.Find(character.Id);
+                        characterToUpdate.Skin = character.GetCharacterPlayer(entityManager).Skin = newSkin.Value;
+
+                        context.SaveChanges();
+
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return false;
         }
     }
 }

@@ -1,7 +1,12 @@
 ﻿using OpenRP.GameMode.Extensions;
+using OpenRP.GameMode.Features.Accounts.Components;
+using OpenRP.GameMode.Features.Characters.Helpers;
+using OpenRP.GameMode.Features.Chat.Enums;
+using OpenRP.GameMode.Features.Chat.Helpers;
 using OpenRP.GameMode.Features.Inventories.Components;
 using OpenRP.GameMode.Features.Inventories.Helpers;
 using OpenRP.GameMode.Helpers;
+using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
@@ -11,7 +16,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
 {
     public class InventoryItemSelectedDialog
     {
-        public static void Open(Player player, OpenInventoryComponent openInventoryComponent, IDialogService dialogService)
+        public static void Open(Player player, OpenInventoryComponent openInventoryComponent, IDialogService dialogService, IEntityManager entityManager)
         {
             ListDialog listDialog = new ListDialog(DialogHelper.GetTitle(openInventoryComponent.selectedInventoryItem.GetItem().Name), "Select", "Cancel");
 
@@ -52,34 +57,36 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
             {
                 if (r.Response == DialogResponse.LeftButton)
                 {
+                    CharacterComponent characterComponent = player.GetComponent<CharacterComponent>();
+
                     switch (openInventoryComponent.actionsList[r.ItemIndex])
                     {
-                        /*case "Wear":
+                        case "Wear":
                             if (openInventoryComponent.selectedInventoryItem.GetItem().IsItemSkin())
                             {
-                                if (player.main_account.current_character.SetCharacterWearingInventorySkin(openInventoryComponent.selectedInventoryItem))
+                                if (characterComponent.CharacterPlayingAs.SetCharacterWearingInventorySkin(openInventoryComponent.selectedInventoryItem, entityManager))
                                 {
-                                    player.SendPlayerChatMessage(PlayerChatMessage.ME, "changed their clothes.");
-                                    player.SendPlayerInfoMessage(Definitions.Enums.PlayerInfoMessage.INFO, "You have succesfully changed your clothes.");
+                                    player.SendPlayerChatMessage(entityManager, PlayerChatMessageType.ME, "changed their clothes.");
+                                    player.SendPlayerInfoMessage(PlayerInfoMessageType.INFO, "You have succesfully changed your clothes.");
                                 }
                                 else
                                 {
-                                    player.SendPlayerInfoMessage(Definitions.Enums.PlayerInfoMessage.ERROR, "An unknown problem occured and we could not change your clothes.");
+                                    player.SendPlayerInfoMessage(PlayerInfoMessageType.ERROR, "An unknown problem occured and we could not change your clothes.");
                                 }
                             }
-                            else if (player.selectedInventoryItem.GetItem().IsItemAttachment())
+                            else if (openInventoryComponent.selectedInventoryItem.GetItem().IsItemAttachment())
                             {
-                                if (player.main_account.current_character.SetCharacterWearingInventorySkin(player.selectedInventoryItem))
+                                if (characterComponent.CharacterPlayingAs.SetCharacterWearingInventorySkin(openInventoryComponent.selectedInventoryItem, entityManager))
                                 {
-                                    player.SendPlayerChatMessage(PlayerChatMessage.ME, "changed their clothes.");
-                                    player.SendPlayerInfoMessage(Definitions.Enums.PlayerInfoMessage.INFO, "You have succesfully changed your clothes.");
+                                    player.SendPlayerChatMessage(entityManager, PlayerChatMessageType.ME, "changed their clothes.");
+                                    player.SendPlayerInfoMessage(PlayerInfoMessageType.INFO, "You have succesfully changed your clothes.");
                                 }
                                 else
                                 {
-                                    player.SendPlayerInfoMessage(Definitions.Enums.PlayerInfoMessage.ERROR, "An unknown problem occured and we could not change your clothes.");
+                                    player.SendPlayerInfoMessage(PlayerInfoMessageType.ERROR, "An unknown problem occured and we could not change your clothes.");
                                 }
                             }
-                            break;
+                            break;/*
                         case "Open":
                             //openInventoryComponent.selectedInventoryItem.GetParentInventory().OpenInventoryDialog(player);
                             break;*/

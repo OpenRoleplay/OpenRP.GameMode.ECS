@@ -4,6 +4,7 @@ using OpenRP.GameMode.Features.Chat.Constants;
 using OpenRP.GameMode.Features.Inventories.Components;
 using OpenRP.GameMode.Features.Inventories.Helpers;
 using OpenRP.GameMode.Helpers;
+using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
 {
     public class InventoryItemsDialog
     {
-        public static void Open(Player player, List<InventoryItem> inventoryItemsToShow, IDialogService dialogService, InventoryArgument[] args = null)
+        public static void Open(Player player, List<InventoryItem> inventoryItemsToShow, IDialogService dialogService, IEntityManager entityManager, InventoryArgument[] args = null)
         {
             CharacterComponent characterComponent = player.GetComponent<CharacterComponent>();
             if (characterComponent != null)
@@ -99,7 +100,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
                         {
                             openInventoryComponent.selectedInventoryItem = openInventoryComponent.openedInventoryItems.ElementAt(r.ItemIndex);
 
-                            InventoryItemSelectedDialog.Open(player, openInventoryComponent, dialogService);
+                            InventoryItemSelectedDialog.Open(player, openInventoryComponent, dialogService, entityManager);
                         }
                         else
                         {

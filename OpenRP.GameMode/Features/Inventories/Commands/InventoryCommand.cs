@@ -15,9 +15,9 @@ namespace OpenRP.GameMode.Features.Inventories.Commands
     public class InventoryCommand : ISystem
     {
         [PlayerCommand]
-        public void Inventory(Player player, IDialogService dialogService)
+        public void Inventory(Player player, IDialogService dialogService, IEntityManager entityManager)
         {
-            InventoryDialog.Open(player, dialogService);
+            InventoryDialog.Open(player, dialogService, entityManager);
         }
     }
 }
