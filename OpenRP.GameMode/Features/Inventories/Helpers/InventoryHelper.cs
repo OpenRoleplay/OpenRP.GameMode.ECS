@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using OpenRP.GameMode.Configuration;
 using OpenRP.GameMode.Data;
 using OpenRP.GameMode.Data.Models;
@@ -37,7 +38,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
             using (var context = new DataContext())
             {
                 //return Inventory.All.SingleOrDefault(i => i.GetInventoryItems().Any(i => i.GetItem().IsItemInventory() && i.inventory_item_use_value == this.inventory_id));//  i.GetInventory() == this));
-                return context.Inventories.FirstOrDefault(i => i.Items.Any(j => j.Item.IsItemInventory() && ItemAdditionalData.Parse(j.AdditionalData).GetString("INVENTORY") == inventory.Id.ToString()));
+                return context.Inventories.Include(i => i.Items).FirstOrDefault(i => i.Items.Any(j => j.Item.IsItemInventory() && ItemAdditionalData.Parse(j.AdditionalData).GetString("INVENTORY") == inventory.Id.ToString()));
             }
         }
 

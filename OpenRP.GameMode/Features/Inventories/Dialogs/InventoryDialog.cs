@@ -21,7 +21,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
                 openInventoryComponent.openedInventory = characterComponent.CharacterPlayingAs.GetCharacterInventory();
                 openInventoryComponent.openedInventoryItems = openInventoryComponent.openedInventory.GetInventoryItems();
 
-                //this.OpenInventoryItemsDialog(player, openInventoryComponent.openedInventoryItems, args);
+                InventoryItemsDialog.Open(player, openInventoryComponent.openedInventoryItems, dialogService, args);
             }
         }
     }

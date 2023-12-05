@@ -93,7 +93,7 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
                         inventory.Add(inventoryColumns.ToArray());
                     }
                     //inventory.Response += OpenInventoryDialogResponse.InventoryDialog_Response;
-                    //inventory.Show(for_player);
+                    dialogService.Show(player, inventory);
                 }
             }
         }

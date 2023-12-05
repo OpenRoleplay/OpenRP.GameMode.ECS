@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using OpenRP.GameMode.Configuration;
 using OpenRP.GameMode.Data;
@@ -75,7 +76,9 @@ namespace OpenRP.GameMode.Features.Characters.Helpers
         {
             using (var context = new DataContext())
             {
-                Character characterData = context.Characters.Find(character.Id);
+                Character characterData = context.Characters
+                    .Include(c => c.Inventory) 
+                    .FirstOrDefault(c => c.Id == character.Id);
 
                 if (characterData.Inventory == null)
                 {
