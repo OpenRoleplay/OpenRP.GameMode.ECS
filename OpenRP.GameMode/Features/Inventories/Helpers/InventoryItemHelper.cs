@@ -1,4 +1,5 @@
-﻿using OpenRP.GameMode.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using OpenRP.GameMode.Data;
 using OpenRP.GameMode.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -17,21 +18,29 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                 {
                     ItemAdditionalData itemAdditionalData = ItemAdditionalData.Parse(item.AdditionalData);
 
-                    string inventoryId = itemAdditionalData.GetString("INVENTORY");
-                    if (String.IsNullOrEmpty(inventoryId))
+                    string stringInventoryId = itemAdditionalData.GetString("INVENTORY");
+                    if (String.IsNullOrEmpty(stringInventoryId))
                     {
                         Inventory inventory = InventoryHelper.CreateInventory(item.GetItem().Name, 1000);
                         if (inventory != null)
                         {
-                            inventoryId = inventory.Id.ToString();
-                            itemAdditionalData.SetString("INVENTORY", inventoryId);
+                            stringInventoryId = inventory.Id.ToString();
+                            itemAdditionalData.SetString("INVENTORY", stringInventoryId);
 
                             InventoryItem updateItem = context.InventoryItems.Find(item.Id);
                             updateItem.AdditionalData = item.AdditionalData = itemAdditionalData.ToString();
                             context.SaveChanges();
                         }
                     }
-                    return context.Inventories.Find(inventoryId);
+
+                    if (ulong.TryParse(stringInventoryId, out ulong inventoryId))
+                    {
+                        return context.Inventories
+                            .Include(i => i.Items)
+                            .ThenInclude(i => i.Item)
+                            .ThenInclude(i => i.UseType)
+                            .FirstOrDefault(i => i.Id == inventoryId);
+                    }
                 }
                 return null;
             }

@@ -39,6 +39,11 @@ namespace OpenRP.GameMode.Data
                 {
                     Id = 1
                     , Name = "Skin"
+                },
+                new ItemType
+                {
+                    Id = 2
+                    , Name = "Wallet"
                 }
             );
             #endregion
@@ -55,6 +60,17 @@ namespace OpenRP.GameMode.Data
                     , CanDestroy = true
                     , KeepOnDeath = true
                     , UseValue = "[SKIN=295]"
+                },
+                new Item
+                {
+                    Id = 2
+                    , Name = "Wallet"
+                    , Description = "Because your virtual pockets just couldn't handle the weight of all that pixelated cash. Now you can carry your hard-earned pixels in style and show the virtual world that you're not just rich, you're wallet-rich!"
+                    , UseTypeId = 2
+                    , Weight = 25
+                    , CanDrop = true
+                    , CanDestroy = true
+                    , KeepOnDeath = true
                 }
             );
             #endregion

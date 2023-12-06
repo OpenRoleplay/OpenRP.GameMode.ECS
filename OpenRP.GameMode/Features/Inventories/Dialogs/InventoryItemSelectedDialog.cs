@@ -1,4 +1,5 @@
-﻿using OpenRP.GameMode.Extensions;
+﻿using OpenRP.GameMode.Data.Models;
+using OpenRP.GameMode.Extensions;
 using OpenRP.GameMode.Features.Accounts.Components;
 using OpenRP.GameMode.Features.Characters.Helpers;
 using OpenRP.GameMode.Features.Chat.Enums;
@@ -88,10 +89,11 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
                                     player.SendPlayerInfoMessage(PlayerInfoMessageType.ERROR, "An unknown problem occured and we could not change your clothes.");
                                 }
                             }
-                            break;/*
+                            break;
                         case "Open":
-                            //openInventoryComponent.selectedInventoryItem.GetParentInventory().OpenInventoryDialog(player);
-                            break;*/
+                            Inventory itemInventory = openInventoryComponent.selectedInventoryItem.GetItemInventory();
+                            InventoryDialog.Open(player, itemInventory, dialogService, entityManager);
+                            break;
                         case "Description":
                             string description = String.Empty;
                             if (String.IsNullOrEmpty(openInventoryComponent.selectedInventoryItem.GetItem().Description))

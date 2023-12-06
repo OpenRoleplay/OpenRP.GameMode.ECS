@@ -17,7 +17,12 @@ namespace OpenRP.GameMode.Features.Inventories.Commands
         [PlayerCommand]
         public void Inventory(Player player, IDialogService dialogService, IEntityManager entityManager)
         {
-            InventoryDialog.Open(player, dialogService, entityManager);
+            CharacterComponent characterComponent = player.GetComponent<CharacterComponent>();
+            if (characterComponent != null)
+            {
+                Inventory characterInventory = characterComponent.CharacterPlayingAs.GetCharacterInventory();
+                InventoryDialog.Open(player, characterInventory, dialogService, entityManager);
+            }
         }
     }
 }
