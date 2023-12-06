@@ -11,6 +11,7 @@ namespace OpenRP.GameMode.Data
         public DbSet<Character> Characters { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<InventoryItem> InventoryItems { get; set; }
+        public DbSet<DroppedInventoryItem> DroppedInventoryItems { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<Actor> Actors { get; set; }

@@ -17,7 +17,7 @@ namespace OpenRP.GameMode
             Console.WriteLine("Licensed under the AGPL-3.0 license.\n\n");
 
             // Init ColAndreas
-            //ColAndreasHelper.Init();
+            ColAndreasHelper.Init();
 
             // AddPlayerClass
             serverService.AddPlayerClass(8, new Vector3(0, 0, 7), 0);

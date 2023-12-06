@@ -108,9 +108,9 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
                             MessageDialog messageDialog = new MessageDialog(DialogHelper.GetTitle(openInventoryComponent.selectedInventoryItem.GetName(), "Description"), description, "Close");
                             dialogService.Show(player, messageDialog);
                             break;
-                        /*case "Drop":
-                            //player.selectedInventoryItem.Drop(player.Position, player.selectedInventoryItem.inventory_item_amount);
-                            break;*/
+                        case "Drop":
+                            openInventoryComponent.selectedInventoryItem.Drop(player.Position, openInventoryComponent.selectedInventoryItem.Amount);
+                            break;
                     }
                 }
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OpenRP.ColAndreas;
 using OpenRP.GameMode.Data;
 using OpenRP.GameMode.Data.Models;
+using SampSharp.Entities.SAMP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +59,37 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
         public static string GetName(this InventoryItem inventoryItem)
         {
             return inventoryItem.GetItem().Name;
+        }
+
+        public static void Drop(this InventoryItem inventoryItem, Vector3 position, uint amount)
+        {
+            using (var context = new DataContext())
+            {
+                if (ColAndreasHelper.FindZ_For2DCoord(position.X, position.Y, out float z))
+                {
+                    Vector3 result_position = new Vector3(position.X, position.Y, z);
+                    if (inventoryItem.Amount == amount)
+                    {
+                        InventoryItem inventoryItemToUpdate = context.InventoryItems.Find(inventoryItem.Id);
+                        inventoryItemToUpdate.InventoryId = 1;
+
+                        context.DroppedInventoryItems.Add(new DroppedInventoryItem()
+                        {
+                            InventoryItemId = inventoryItemToUpdate.Id
+                            , PosX = result_position.X
+                            , PosY = result_position.Y
+                            , PosZ = result_position.Z
+                            , RotX = 0
+                            , RotY = -90
+                            , RotZ = 0
+                        });
+                    } else
+                    {
+
+                    }
+                    context.SaveChanges();
+                }
+            }
         }
 
         public static uint GetWeight(this InventoryItem inventoryItem)
