@@ -31,9 +31,9 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
 
                 foreach (string data in custom_data_array)
                 {
-                    string[] seperate_values = custom_data.TrimStart('[').TrimEnd(']').Split("=");
+                    string[] seperate_values = data.Split("=");
 
-                    this.custom_data_dictionary.Add(seperate_values[0], seperate_values[1]);
+                    this.custom_data_dictionary.Add(seperate_values[0].TrimStart('['), seperate_values[1].TrimEnd(']'));
                 }
             }
         }
@@ -115,6 +115,7 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                     newCustomDataString.Append(";");
                 }
                 newCustomDataString.Append(string.Format("[{0}={1}]", key_value.Key.ToUpper(), key_value.Value));
+                firstValue = false;
             }
 
             this.custom_data = newCustomDataString.ToString();

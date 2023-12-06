@@ -50,8 +50,10 @@ namespace OpenRP.GameMode.Features.Inventories.Dialogs
             }
             listItems.Sort();
 
+            listItems.ForEach(item => { 
+                listDialog.Add(item); 
+            });
             openInventoryComponent.actionsList = listItems;
-            listDialog.Add(String.Join("\n", listItems));
 
             void InventoryItemSelectedItemActionsDialogHandler(ListDialogResponse r)
             {
