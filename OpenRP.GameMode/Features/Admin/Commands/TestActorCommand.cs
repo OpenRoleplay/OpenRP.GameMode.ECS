@@ -2,7 +2,6 @@
 using SampSharp.Entities.SAMP;
 using SampSharp.Entities.SAMP.Commands;
 using SampSharp.GameMode;
-using SampSharp.Streamer.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
