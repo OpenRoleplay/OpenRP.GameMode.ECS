@@ -39,8 +39,6 @@ namespace OpenRP.GameMode.Features.Inventories.Helpers
                     {
                         return context.Inventories
                             .Include(i => i.Items)
-                            .ThenInclude(i => i.Item)
-                            .ThenInclude(i => i.UseType)
                             .FirstOrDefault(i => i.Id == inventoryId);
                     }
                 }

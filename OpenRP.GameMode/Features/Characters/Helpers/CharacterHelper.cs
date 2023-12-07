@@ -80,8 +80,6 @@ namespace OpenRP.GameMode.Features.Characters.Helpers
                 Character characterData = context.Characters
                     .Include(c => c.Inventory)
                     .ThenInclude(c => c.Items)
-                    .ThenInclude(c => c.Item)
-                    .ThenInclude(c => c.UseType)
                     .FirstOrDefault(c => c.Id == character.Id);
 
                 if (characterData.Inventory == null)

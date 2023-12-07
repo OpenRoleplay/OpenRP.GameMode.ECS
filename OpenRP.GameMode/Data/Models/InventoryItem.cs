@@ -9,7 +9,7 @@ namespace OpenRP.GameMode.Data.Models
         public ulong Id { get; set; }
         #region Item
         public ulong ItemId { get; set; }
-        public Item Item { get; set; }
+        private Item Item { get; set; }
         #endregion
         public uint Amount { get; set; }
         public uint UsesRemaining { get; set; }
