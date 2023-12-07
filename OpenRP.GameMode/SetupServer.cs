@@ -4,6 +4,8 @@ using SampSharp.Entities.SAMP;
 using System;
 using System.Globalization;
 using OpenRP.ColAndreas;
+using SampSharp.Streamer.Entities;
+using OpenRP.GameMode.Data;
 
 namespace OpenRP.GameMode
 {

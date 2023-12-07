@@ -3,6 +3,7 @@ using OpenRP.GameMode.Features.Chat.Handlers;
 using SampSharp.Entities;
 using SampSharp.Entities.SAMP;
 using SampSharp.Entities.SAMP.Commands;
+using SampSharp.Streamer.Entities;
 
 namespace OpenRP.GameMode
 {
@@ -11,8 +12,10 @@ namespace OpenRP.GameMode
         public void Configure(IServiceCollection services)
         {
             // TODO: Add services and systems to the services collection
-            services.AddSystemsInAssembly();
-            services.AddSingleton<IPlayerCommandService, PlayerCommandServiceHandler>();
+            services
+                .AddTransient<IStreamerService, StreamerService>()
+                .AddSingleton<IPlayerCommandService, PlayerCommandServiceHandler>()
+                .AddSystemsInAssembly();
         }
 
         public void Configure(IEcsBuilder builder)
@@ -20,7 +23,8 @@ namespace OpenRP.GameMode
             // TODO: Enable desired ECS system features
             builder.EnableSampEvents()
                 .EnablePlayerCommands()
-                .EnableRconCommands();
+                .EnableRconCommands()
+                .EnableStreamerEvents(); ;
         }
     }
 }
