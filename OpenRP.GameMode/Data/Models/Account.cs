@@ -8,10 +8,10 @@ namespace OpenRP.GameMode.Data.Models
     {
         public ulong Id { get; set; }
         [Required]
-        [Column(TypeName = "varchar(24)")]
+        [MaxLength(24)]
         public string Username { get; set; }
         [Required]
-        [Column(TypeName = "char(60)")]
+        [MaxLength(60)]
         public string Password { get; set; }
         public byte Level { get; set; } = 1;
         public ushort Experience { get; set; } = 0;

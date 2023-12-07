@@ -8,17 +8,17 @@ namespace OpenRP.GameMode.Data.Models
     {
         public ulong Id { get; set; }
         [Required]
-        [Column(TypeName = "varchar(35)")]
+        [MaxLength(35)]
         public string FirstName { get; set; }
-        [Column(TypeName = "varchar(30)")]
+        [MaxLength(30)]
         public string MiddleName { get; set; }
         [Required]
-        [Column(TypeName = "varchar(35)")]
+        [MaxLength(35)]
         public string LastName { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
-        [Column(TypeName = "varchar(30)")]
+        [MaxLength(30)]
         public string Accent { get; set; }
         public Inventory Inventory { get; set; }
         public int Skin { get; set; } = 26;
