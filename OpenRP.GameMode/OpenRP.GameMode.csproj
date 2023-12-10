@@ -22,7 +22,7 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
         <PackageReference Include="SampSharp.Entities" Version="0.10.1" />
-        <PackageReference Include="SampSharp.Streamer" Version="0.10.0" />
+        <PackageReference Include="SampSharp.Streamer.Entities" Version="0.10.0" />
     </ItemGroup>
 
     <ItemGroup>
