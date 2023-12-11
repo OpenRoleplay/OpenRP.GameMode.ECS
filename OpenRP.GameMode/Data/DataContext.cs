@@ -15,6 +15,7 @@ namespace OpenRP.GameMode.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<Actor> Actors { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
         public DbSet<PermissionGroup> PermissionGroups { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
