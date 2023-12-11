@@ -15,6 +15,7 @@ namespace OpenRP.GameMode.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<Actor> Actors { get; set; }
+        public DbSet<PermissionGroup> PermissionGroups { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -72,6 +73,25 @@ namespace OpenRP.GameMode.Data
                     , CanDrop = true
                     , CanDestroy = true
                     , KeepOnDeath = true
+                }
+            );
+            #endregion
+            #region Permissions Default Data
+            modelBuilder.Entity<Permission>().HasData(
+                new Permission
+                {
+                    Id = 1
+                    , Command = "inventory"
+                    , PermissionGroupId = 1
+                }
+            );
+            #endregion
+            #region PermissionGroups Default Data
+            modelBuilder.Entity<PermissionGroup>().HasData(
+                new PermissionGroup
+                {
+                    Id = 1
+                    , Name = "Default"
                 }
             );
             #endregion
